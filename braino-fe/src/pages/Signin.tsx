@@ -41,10 +41,12 @@ const GearIcon = ({ className }: { className?: string }) => (
   </svg>
 );
 
-const floatTransition = {
+import type { Transition } from "framer-motion";
+
+const floatTransition: Transition = {
   repeat: Infinity,
-  repeatType: "reverse" as const,
-  ease: "easeInOut",
+  repeatType: "reverse",
+  ease: [0.42, 0, 0.58, 1], 
 };
 
 export function Signin() {
