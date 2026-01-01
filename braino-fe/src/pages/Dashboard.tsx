@@ -56,7 +56,7 @@ export function Dashboard() {
                   }
                 });
 
-                const shareURL = `http://localhost:5173/braino/share/${response.data.hash}`;
+                const shareURL = `https://braino-jmod.onrender.com/${response.data.hash}`;
                 alert(shareURL);
               }}
                 title={"Share Brain"}
