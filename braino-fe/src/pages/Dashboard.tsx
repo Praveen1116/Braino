@@ -56,7 +56,7 @@ export function Dashboard() {
                   }
                 });
 
-                const shareURL = `https://braino-jmod.onrender.com/braino/share/${response.data.hash}`;
+                const shareURL = `https://braino-gamma.vercel.app/braino/share/${response.data.hash}`;
                 alert(shareURL);
               }}
                 title={"Share Brain"}
