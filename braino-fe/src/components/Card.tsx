@@ -1,5 +1,6 @@
 import axios from "axios";
 import { DeleteIcon } from "../icons/DeleteIcon";
+import { useEffect, useRef } from "react";
 // import { ShareIcon } from "../icons/ShareIcon";
 
 interface CardProps {
@@ -20,6 +21,7 @@ interface CardProps {
 export function Card({ contentId, title, link, type, refresh }: CardProps) {
 
   const BACKEND_URL = import.meta.env.VITE_API_URL;
+  const tweetRef = useRef<HTMLDivElement>(null)
 
   async function deleteBtn() {
     await axios.delete(`${BACKEND_URL}/api/v1/braino/delete/${contentId}`,
@@ -30,6 +32,12 @@ export function Card({ contentId, title, link, type, refresh }: CardProps) {
     });
     refresh();
   }
+
+  useEffect(() => {
+    if(type === "twitter" && (window as any).twttr && tweetRef.current) {
+      (window as any).twttr.widgets.load(tweetRef.current);
+    }
+  }, [type, link]);
 
   return (
     <div className="break-inside-avoid mb-6">
@@ -67,7 +75,7 @@ export function Card({ contentId, title, link, type, refresh }: CardProps) {
           )}
 
           {type === "twitter" && (
-            <div className="w-full flex justify-center">
+            <div className="w-full flex justify-center" ref={tweetRef}>
               <blockquote className="twitter-tweet">
                 <a href={link.replace("x.com", "twitter.com")}></a>
               </blockquote>
