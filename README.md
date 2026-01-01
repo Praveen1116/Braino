@@ -33,7 +33,7 @@ Braino/
 ### Prerequisites
 
 - [Node.js](https://nodejs.org/) (v18+ recommended)
-- [npm](https://www.npmjs.com/) or [yarn](https://yarnpkg.com/)
+- [npm](https://www.npmjs.com/)
 - [Git](https://git-scm.com/)
 
 ---
