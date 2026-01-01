@@ -15,6 +15,10 @@ Welcome to **Braino** – a modern, full-stack application designed to deliver s
 
 *Note: Actual features may depend on your implementation. Update this list as your app grows!*
 
+## Highlight of dashboard
+<img width="1900" height="911" alt="image" src="https://github.com/user-attachments/assets/06a5d515-beed-41da-a2f8-8ee866dc96b9" />
+
+
 ---
 
 ## Repository Structure
