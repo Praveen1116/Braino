@@ -3,7 +3,6 @@ import { Button } from "./Button";
 import { Input } from "./Input";
 import { CrossIcon } from "../icons/CrossIcon";
 import axios from "axios";
-import { BACKEND_URL } from "../config";
 
 enum ContentType {
   YouTube = "youtube",
@@ -20,6 +19,8 @@ export function CreateContentModal({ open, onClose }: CreateContentModalProps) {
   const titleRef = useRef<HTMLInputElement>(null);
   const linkRef = useRef<HTMLInputElement>(null);
   const [type, setType] = useState(ContentType.YouTube);
+
+  const BACKEND_URL = import.meta.env.VITE_API_URL;
 
   async function addContent() {
     const title = titleRef.current?.value;

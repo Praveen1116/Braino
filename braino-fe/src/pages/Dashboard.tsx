@@ -7,12 +7,13 @@ import { SideBar } from "../components/SideBar";
 import { CreateContentModal } from "../components/CreateContentModal";
 import { useEffect, useState } from "react";
 import { useContent } from "../hooks/useContent";
-import { BACKEND_URL } from "../config";
 import axios from "axios";
 
 export function Dashboard() {
   const [modelOpen, setModelOpen] = useState(false);
   const {content, refresh} = useContent();
+
+  const BACKEND_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     refresh();

@@ -2,7 +2,6 @@ import { useRef } from "react";
 import { Input } from "../components/Input";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import { BACKEND_URL } from "../config";
 import { Button } from "../components/Button";
 import { motion } from "framer-motion";
 
@@ -52,6 +51,8 @@ export function Signin() {
   const usernameRef = useRef<HTMLInputElement>(null);
   const passwordRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
+
+  const BACKEND_URL = import.meta.env.VITE_API_URL;
 
   async function signin() {
     const username = usernameRef.current?.value;

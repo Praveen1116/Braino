@@ -1,13 +1,14 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { BACKEND_URL } from "../config";
 import { Card } from "../components/Card";
 
 export function SharePage() {
   const { shareLink } = useParams();
   const [username, setUsername] = useState("");
   const [content, setContent] = useState([]);
+
+  const BACKEND_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
     async function fetchSharedBrain() {

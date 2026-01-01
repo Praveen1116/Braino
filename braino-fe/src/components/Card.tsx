@@ -1,7 +1,6 @@
 import axios from "axios";
 import { DeleteIcon } from "../icons/DeleteIcon";
 // import { ShareIcon } from "../icons/ShareIcon";
-import { BACKEND_URL } from "../config";
 
 interface CardProps {
   contentId: string,
@@ -19,6 +18,8 @@ interface CardProps {
 }
 
 export function Card({ contentId, title, link, type, refresh }: CardProps) {
+
+  const BACKEND_URL = import.meta.env.VITE_API_URL;
 
   async function deleteBtn() {
     await axios.delete(`${BACKEND_URL}/api/v1/braino/delete/${contentId}`,
