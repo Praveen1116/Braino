@@ -192,7 +192,7 @@ export function Signin() {
         
         <div className="mb-6 space-y-4 bg-sky-50/50 p-4 rounded-2xl">
           <Input placeholder="Username" reference={usernameRef} />
-          <Input placeholder="Password" reference={passwordRef} />
+          <Input placeholder="Password" reference={passwordRef} type="password" />
         </div>
         <div className="flex justify-center mt-8">
           <motion.div whileHover={{ scale: 1.03 }} whileTap={{ scale: 0.98 }}>
