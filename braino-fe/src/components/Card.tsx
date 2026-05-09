@@ -6,7 +6,8 @@ import { useEffect, useRef } from "react";
 interface CardProps {
   contentId: string,
   title: string;
-  link: string;
+  link?: string;
+  content?: string;
   type:
     | "image"
     | "twitter"
@@ -18,10 +19,11 @@ interface CardProps {
   refresh: () => void;
 }
 
-export function Card({ contentId, title, link, type, refresh }: CardProps) {
+export function Card({ contentId, title, link, content, type, refresh }: CardProps) {
 
   const BACKEND_URL = import.meta.env.VITE_API_URL;
   const tweetRef = useRef<HTMLDivElement>(null)
+  const articleText = content?.trim() || link?.trim() || "";
 
   async function deleteBtn() {
     await axios.delete(`${BACKEND_URL}/api/v1/braino/delete/${contentId}`,
@@ -64,7 +66,7 @@ export function Card({ contentId, title, link, type, refresh }: CardProps) {
             <div className="w-full rounded-xl overflow-hidden bg-gray-50 border border-gray-100">
               <iframe
                 className="w-full aspect-video"
-                src={link.replace("watch", "embed").replace("?v=", "/")}
+                src={link?.replace("watch", "embed").replace("?v=", "/")}
                 title="YouTube video player"
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -77,7 +79,7 @@ export function Card({ contentId, title, link, type, refresh }: CardProps) {
           {type === "twitter" && (
             <div className="w-full flex justify-center" ref={tweetRef}>
               <blockquote className="twitter-tweet">
-                <a href={link.replace("x.com", "twitter.com")}></a>
+                <a href={link?.replace("x.com", "twitter.com")}></a>
               </blockquote>
             </div>
           )}
@@ -85,6 +87,14 @@ export function Card({ contentId, title, link, type, refresh }: CardProps) {
           {type === "link" && (
             <div className="w-full flex justify-center">
               <a href={link} rel="noopener noreferrer" className="text-blue-600 underline break-all">{link}</a>
+            </div>
+          )}
+
+          {type === "article" && (
+            <div className="w-full rounded-xl bg-amber-50 border border-amber-100 p-4">
+              <p className="text-sm text-gray-700 whitespace-pre-wrap break-words line-clamp-[12]">
+                {articleText || "No text available"}
+              </p>
             </div>
           )}
         </div>
@@ -96,6 +106,8 @@ export function Card({ contentId, title, link, type, refresh }: CardProps) {
           ${
             type === "youtube"
               ? "bg-red-50 text-red-700 border border-red-100"
+              : type === "article"
+              ? "bg-amber-50 text-amber-700 border border-amber-100"
               : type === "link"
               ? "bg-gray-200 text-gray-700 border border-gray-300"
               : "bg-blue-50 text-blue-700 border border-blue-100"

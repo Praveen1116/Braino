@@ -82,7 +82,7 @@ export function Dashboard() {
         </div>
 
         <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
-          {content.map(({_id, title, link, type}) => <Card key={_id} contentId={_id} refresh={refresh} title={title} link={link} type={type} />)}
+          {content.map(({_id, title, link, content, type}) => <Card key={_id} contentId={_id} refresh={refresh} title={title} link={link} content={content} type={type} />)}
         </div>
 
       </div>

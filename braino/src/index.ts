@@ -102,12 +102,17 @@ app.post(
 );
 
 app.post("/api/v1/braino/content", userMiddleWare, async (req, res) => {
-  const { title, type, link, tags } = req.body;
+  const { title, type, link, content, tags } = req.body;
+  const normalizedContent =
+    type === "article" ? (content || link || "").trim() : content;
+  const normalizedLink =
+    type === "article" ? (link || content || "").trim() : link;
 
   await ContentModel.create({
     title,
     type,
-    link,
+    link: normalizedLink,
+    content: normalizedContent,
     userId: new mongoose.Types.ObjectId(req.userId),
     tags,
   });

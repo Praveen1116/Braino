@@ -23,8 +23,8 @@ export function SharePage() {
     <div className="p-8">
       <h1 className="text-2xl font-bold mb-4">{username}'s Shared Brain</h1>
       <div className="columns-1 md:columns-2 lg:columns-3 gap-6">
-        {content.map(({ _id, title, link, type }) => (
-          <Card key={_id} contentId={_id} title={title} link={link} type={type} refresh={() => {}} />
+        {content.map(({ _id, title, link, content, type }) => (
+          <Card key={_id} contentId={_id} title={title} link={link} content={content} type={type} refresh={() => {}} />
         ))}
       </div>
     </div>

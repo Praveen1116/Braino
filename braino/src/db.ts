@@ -14,6 +14,7 @@ const contentTypes = ["image", "twitter", "video", "link", "audio", "article", "
 const ContentSchema = new Schema({
     title: String,
     link: String,
+    content: String,
     type: { type: String, enum: contentTypes, required: true },
     userId: { type: mongoose.Types.ObjectId, ref: "User", required: true },
     tags: [{ type: String, ref: "Tags" }]
