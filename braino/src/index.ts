@@ -90,7 +90,8 @@ app.post(
           {
             id: User._id,
           },
-          JWT_SECRET
+          JWT_SECRET,
+          { expiresIn: "3d" }
         );
 
         res.status(200).json({ message: token });
