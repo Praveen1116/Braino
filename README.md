@@ -1,5 +1,7 @@
 # Braino
 
+## Live Link: https://braino-gamma.vercel.app/
+
 Welcome to **Braino** – a modern, full-stack application designed to deliver seamless user experiences with a robust backend and a dynamic frontend. This monorepo contains both the backend (Node.js/TypeScript) and frontend (React/TypeScript) projects.
 
 ---
